@@ -10,8 +10,8 @@ phases:
     commands:
       - echo Logging in to Amazon ECR...
       - aws --version
-      - aws ecr get-login-password --region eu-north-1 | docker login --username AWS --password-stdin 496746411336.dkr.ecr.eu-north-1.amazonaws.com
-      - REPOSITORY_URI=496746411336.dkr.ecr.eu-north-1.amazonaws.com/py-app-new
+      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 496746411336.dkr.ecr.us-east-1.amazonaws.com
+      - REPOSITORY_URI=496746411336.dkr.ecr.us-east-1.amazonaws.com/python-app
       - IMAGE_TAG=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
   build:
     commands:
@@ -25,6 +25,6 @@ phases:
       - echo Pushing the Docker images...
       - docker push $REPOSITORY_URI:$IMAGE_TAG
       - echo Writing image definitions file...
-      - printf '[{"name":"py-app-new","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
+      - printf '[{"name":"python-app","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
 artifacts:
     files: imagedefinitions.json
