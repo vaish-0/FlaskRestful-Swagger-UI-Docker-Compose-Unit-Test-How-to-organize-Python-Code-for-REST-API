@@ -10,7 +10,7 @@ phases:
       - echo Logging in to Amazon ECR..
       - aws --version
       - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 496746411336.dkr.ecr.us-east-1.amazonaws.com
-      - REPOSITORY_URI=496746411336.dkr.ecr.us-east-1.amazonaws.com/java-repo-eks
+      - REPOSITORY_URI=496746411336.dkr.ecr.us-east-1.amazonaws.com/python-repo-eks
       - IMAGE_TAG=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
       # Update Image tag in our Kubernetes Deployment Manifest        
       - echo "Update Image tag in kube-manifest..."
