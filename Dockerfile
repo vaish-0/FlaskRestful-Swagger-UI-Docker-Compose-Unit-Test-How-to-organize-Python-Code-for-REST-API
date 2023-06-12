@@ -1,4 +1,4 @@
-FROM python:3.9
+FROM python:3.7
 
 RUN python3 --version
 RUN pip3 --version
